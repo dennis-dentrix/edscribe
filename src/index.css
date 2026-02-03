@@ -426,6 +426,10 @@
     color: #64748b;
   }
 
+  .theme-toggle-mobile {
+    display: none;
+  }
+
   /* Auth pages */
   .auth-page {
     min-height: calc(100vh - 160px);
@@ -1264,6 +1268,185 @@
   }
 }
 
+/* Dark mode */
+html.theme-dark body {
+  color: #e2e8f0;
+  background-color: #0b1220;
+}
+
+html.theme-dark h1,
+html.theme-dark h2,
+html.theme-dark h3,
+html.theme-dark h4,
+html.theme-dark h5,
+html.theme-dark h6 {
+  color: #f1f5f9;
+}
+
+html.theme-dark a {
+  color: #93c5fd;
+}
+
+html.theme-dark a:hover {
+  color: #bfdbfe;
+}
+
+html.theme-dark .navbar {
+  background-color: #0f172a;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.35);
+}
+
+html.theme-dark .navbar .text-neutral-900 {
+  color: #f8fafc;
+}
+
+html.theme-dark .nav-link {
+  color: #cbd5f5;
+}
+
+html.theme-dark .nav-link:hover,
+html.theme-dark .nav-link.active {
+  color: #bfdbfe;
+  background-color: rgba(59, 130, 246, 0.12);
+}
+
+html.theme-dark .card,
+html.theme-dark .pricing-calculator,
+html.theme-dark .auth-card {
+  background-color: #111827;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.35),
+    0 4px 6px -4px rgb(0 0 0 / 0.35);
+}
+
+html.theme-dark .card-header,
+html.theme-dark .card-footer {
+  border-color: #1f2937;
+  background-color: #0f172a;
+}
+
+html.theme-dark .section-title p,
+html.theme-dark .service-card p,
+html.theme-dark .step-card p,
+html.theme-dark .dashboard-header p,
+html.theme-dark .detail-label,
+html.theme-dark .empty-state p,
+html.theme-dark .auth-header p,
+html.theme-dark .auth-footer,
+html.theme-dark .form-label {
+  color: #a8b3cf;
+}
+
+html.theme-dark .form-input {
+  background-color: #0b1220;
+  border-color: #1f2937;
+  color: #e2e8f0;
+}
+
+html.theme-dark .form-input::placeholder {
+  color: #94a3b8;
+}
+
+html.theme-dark .form-input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+html.theme-dark .form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+html.theme-dark .btn-secondary,
+html.theme-dark .btn-google {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  border-color: #1f2937;
+}
+
+html.theme-dark .btn-secondary:hover,
+html.theme-dark .btn-google:hover {
+  background-color: #111827;
+  border-color: #334155;
+}
+
+html.theme-dark .btn-outline {
+  border-color: #93c5fd;
+  color: #93c5fd;
+}
+
+html.theme-dark .btn-outline:hover {
+  background-color: #93c5fd;
+  color: #0b1220;
+}
+
+html.theme-dark .pricing-result,
+html.theme-dark .order-summary {
+  background-color: rgba(59, 130, 246, 0.12);
+}
+
+html.theme-dark .price-label,
+html.theme-dark .summary-row,
+html.theme-dark .detail-row {
+  border-color: #1f2937;
+}
+
+html.theme-dark .price-amount,
+html.theme-dark .summary-total {
+  color: #93c5fd;
+}
+
+html.theme-dark .badge-primary {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #bfdbfe;
+}
+
+html.theme-dark .badge-success {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+html.theme-dark .badge-warning {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+}
+
+html.theme-dark .badge-error {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+html.theme-dark .auth-page {
+  background-color: #0f172a;
+}
+
+html.theme-dark .loader-overlay {
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+html.theme-dark .hero {
+  background:
+    radial-gradient(1200px circle at 20% 15%, rgba(56, 189, 248, 0.18), transparent 45%),
+    linear-gradient(135deg, #0b1220 0%, #0f2a44 55%, #0b3b48 100%);
+}
+
+html.theme-dark .cta-section {
+  background:
+    radial-gradient(900px circle at 80% 20%, rgba(59, 130, 246, 0.22), transparent 45%),
+    linear-gradient(135deg, #0b1220 0%, #12304a 55%, #0b2f33 100%);
+}
+
+html.theme-dark .hero-image svg {
+  color: #7dd3fc;
+}
+
+html.theme-dark .service-icon {
+  background-color: rgba(59, 130, 246, 0.16);
+}
+
+html.theme-dark .service-icon svg {
+  color: #93c5fd;
+}
+
 /* Responsive utilities */
 @media (max-width: 768px) {
   .container {
@@ -1299,6 +1482,10 @@
 
   .navbar-actions {
     display: none;
+  }
+
+  .theme-toggle-mobile {
+    display: inline-flex;
   }
 
   .hero-content h1 {

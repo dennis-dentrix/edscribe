@@ -3,21 +3,20 @@
  * Sets up routing and global app structure
  */
 
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth } from './context/AuthContext';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Loader from './components/Loader';
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
+import Loader from "./components/Loader";
+import AppLayout from "./layouts/AppLayout";
 
 // Pages
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import Dashboard from './pages/Dashboard';
-import CreateOrder from './pages/CreateOrder';
-import OrderDetails from './pages/OrderDetails';
-import NotFoundPage from './pages/NotFoundPage';
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import Dashboard from "./pages/Dashboard";
+import CreateOrder from "./pages/CreateOrder";
+import OrderDetails from "./pages/OrderDetails";
+import NotFoundPage from "./pages/NotFoundPage";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -69,48 +68,59 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={
-            <GuestRoute>
-              <LoginPage />
-            </GuestRoute>
-          } />
-          <Route path="/signup" element={
-            <GuestRoute>
-              <SignupPage />
-            </GuestRoute>
-          } />
+    <Routes>
+      <Route
+        path="/login"
+        element={
+          <GuestRoute>
+            <LoginPage />
+          </GuestRoute>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <GuestRoute>
+            <SignupPage />
+          </GuestRoute>
+        }
+      />
 
-          {/* Protected Routes */}
-          <Route path="/dashboard" element={
+      <Route element={<AppLayout />}>
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/dashboard"
+          element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } />
-          <Route path="/orders/new" element={
+          }
+        />
+        <Route
+          path="/orders/new"
+          element={
             <ProtectedRoute>
               <CreateOrder />
             </ProtectedRoute>
-          } />
-          <Route path="/orders/:id" element={
+          }
+        />
+        <Route
+          path="/orders/:id"
+          element={
             <ProtectedRoute>
               <OrderDetails />
             </ProtectedRoute>
-          } />
+          }
+        />
 
-          {/* 404 */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+        {/* 404 */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
-
