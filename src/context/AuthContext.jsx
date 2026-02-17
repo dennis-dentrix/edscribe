@@ -8,6 +8,14 @@ import authService from '../services/authService';
 
 const AuthContext = createContext(null);
 
+const extractAuthPayload = (responseData) => {
+  const payload = responseData?.data ?? responseData ?? {};
+  const token = payload?.token ?? responseData?.token ?? null;
+  const user = payload?.user ?? responseData?.user ?? null;
+
+  return { token, user };
+};
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -54,11 +62,16 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
 
       const data = await authService.login(email, password);
+      const { token, user: loggedInUser } = extractAuthPayload(data);
 
-      localStorage.setItem('token', data.token);
-      setUser(data.user);
+      if (!token || !loggedInUser) {
+        throw new Error('Invalid login response from server.');
+      }
 
-      return data.user;
+      localStorage.setItem('token', token);
+      setUser(loggedInUser);
+
+      return loggedInUser;
     } catch (err) {
       const message = err.message || 'Login failed. Please check your credentials.';
       setError(message);
@@ -75,11 +88,16 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
 
       const data = await authService.register(userData);
+      const { token, user: registeredUser } = extractAuthPayload(data);
 
-      localStorage.setItem('token', data.token);
-      setUser(data.user);
+      if (!token || !registeredUser) {
+        throw new Error('Invalid registration response from server.');
+      }
 
-      return data.user;
+      localStorage.setItem('token', token);
+      setUser(registeredUser);
+
+      return registeredUser;
     } catch (err) {
       const message = err.message || 'Registration failed. Please try again.';
       setError(message);

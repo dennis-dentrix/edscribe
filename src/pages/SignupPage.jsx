@@ -79,12 +79,14 @@ function SignupPage() {
 
     setLoading(true);
     setGeneralError('');
+    console.log(formData)
 
     try {
       await register({
         name: formData.name,
         email: formData.email,
         password: formData.password,
+        role: "student",
       });
       navigate('/dashboard');
     } catch (error) {

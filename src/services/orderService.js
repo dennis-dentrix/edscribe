@@ -26,7 +26,11 @@ export const getOrder = async (id) => {
 };
 
 export const createOrder = async (orderData) => {
-  const response = await api.post(ORDER_ENDPOINTS.createOrder, orderData);
+  const isFormData =
+    typeof FormData !== "undefined" && orderData instanceof FormData;
+  const response = isFormData
+    ? await api.postForm(ORDER_ENDPOINTS.createOrder, orderData)
+    : await api.post(ORDER_ENDPOINTS.createOrder, orderData);
   return response.data;
 };
 

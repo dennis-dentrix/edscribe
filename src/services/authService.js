@@ -21,6 +21,7 @@ const AUTH_ENDPOINTS = {
  */
 export const register = async (userData) => {
   const response = await api.post(AUTH_ENDPOINTS.register, userData);
+  console.log(userData);
   return response.data;
 };
 
@@ -32,6 +33,7 @@ export const register = async (userData) => {
  */
 export const login = async (email, password) => {
   const response = await api.post(AUTH_ENDPOINTS.login, { email, password });
+  // console.log(response);
   return response.data;
 };
 

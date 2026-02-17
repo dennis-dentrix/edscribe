@@ -3,7 +3,7 @@
  * User authentication via email/password or Google OAuth
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Chrome } from "lucide-react";
 import { useAuth } from "../context/AuthContext";

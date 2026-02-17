@@ -5,7 +5,8 @@
 
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "/api";
+// const API_URL = import.meta.env.VITE_API_URL || "https://edscribe-api.onrender.com";
+const API_URL = "https://edscribe-api.onrender.com/api/v1";
 
 // Create axios instance with default config
 const api = axios.create({

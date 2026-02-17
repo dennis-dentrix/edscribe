@@ -22,6 +22,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
 
+
   if (loading) {
     return (
       <div className="loader-overlay">
@@ -29,6 +30,8 @@ const ProtectedRoute = ({ children }) => {
       </div>
     );
   }
+
+  // console.log(isAuthenticated)
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
